@@ -68,7 +68,7 @@ d-i netcfg/wireless_wep string
 # If non-free firmware is needed for the network or other hardware, you can
 # configure the installer to always try to load it, without prompting. Or
 # change to false to disable asking.
-#d-i hw-detect/load_firmware boolean true
+d-i hw-detect/load_firmware boolean true
 
 ### Network console
 # Use the following settings if you wish to make use of the network-console
@@ -332,7 +332,7 @@ tasksel tasksel/first multiselect
 #tasksel tasksel/first multiselect kubuntu-desktop
 
 # Individual additional packages to install
-d-i pkgsel/include string openssh-server vim sudo kvm opennebula opennebula-node opennebula-sunstone opennebula-tools
+d-i pkgsel/include string openssh-server vim sudo    kvm opennebula opennebula-node opennebula-sunstone opennebula-tools     w3m
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select safe-upgrade
