@@ -22,4 +22,4 @@ clean:
 	rm -rf cd-src cd-dst cloud-interop.iso
 
 dist-clean: clean
-	rm -rf $(ISO_FILE)
+	rm -rf $(ISO_FILE) one-templates/$(ONE_TMPL)

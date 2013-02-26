@@ -108,8 +108,3 @@ DISK   = [
 NIC    = [ NETWORK = "Small network" ]
 EOF
 fi
-
-su - oneadmin -c "onevm create ttylinux.one"
-
-
-
