@@ -17,6 +17,7 @@ iso:
 	cp img/* 	cd-dst/isolinux
 	cp preseed/* 	cd-dst/preseed
 	genisoimage -r -V "cloud-interop" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o cloud-interop.iso cd-dst
+	isohybrid cloud-interop.iso
 
 clean:
 	rm -rf cd-src cd-dst cloud-interop.iso
