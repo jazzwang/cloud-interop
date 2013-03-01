@@ -5,11 +5,11 @@ ONE_TMPL := ttylinux.tar.gz
 all: iso
 
 iso: 
-	mkdir -p cd-src cd-dst one-templates
+	mkdir -p cd-src cd-dst cd-dst/one-templates
 	if [ ! -f /usr/bin/genisoimage ]; then apt-get -y install genisoimage; fi
 	if [ ! -f /usr/bin/isohybrid ]; then apt-get -y install syslinux; fi
 	if [ ! -f "$(ISO_FILE)" ]; then wget $(ISO_URL)/$(ISO_FILE); fi
-	if [ ! -f "one-templates/$(ONE_TMPL)" ]; then wget http://dev.opennebula.org/attachments/download/170/$(ONE_TMPL) -O one-templates/$(ONE_TMPL); fi
+	if [ ! -f "cd-dst/one-templates/$(ONE_TMPL)" ]; then wget http://dev.opennebula.org/attachments/download/170/$(ONE_TMPL) -O cd-dst/one-templates/$(ONE_TMPL); fi
 	mount -o loop $(ISO_FILE) cd-src/
 	rsync -av cd-src/ cd-dst/
 	umount cd-src
@@ -23,4 +23,4 @@ clean:
 	rm -rf cd-src cd-dst cloud-interop.iso
 
 dist-clean: clean
-	rm -rf $(ISO_FILE) one-templates
+	rm -rf $(ISO_FILE)
