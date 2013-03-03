@@ -16,7 +16,7 @@ set -e
 ## Setup SSH client Global variable
 echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 ## Copy controller ssh key to localhost
-if [ -f /var/lib/one/.ssh/id_rsa.pub ]; then
+if [ ! -f /var/lib/one/.ssh/authorized_keys ]; then
   ### ssh-copy-host for user 'oneadmin'
   cp -p /var/lib/one/.ssh/id_rsa.pub /var/lib/one/.ssh/authorized_keys
 fi
@@ -33,7 +33,8 @@ fi
 ##   oneadmin@controller> onehost create localhost im_kvm vmm_kvm tm_ssh dummy
 if [ -f /etc/one/oned.conf ]; then
   cat >> /etc/one/oned.conf << EOF
-### Add by 'preseed/run one-postinst.sh'
+
+### Add by 'one-postinst.sh'
 TM_MAD = [
     name       = "tm_shared",
     executable = "one_tm",
@@ -73,7 +74,7 @@ fi
 ##     0 oneadmin Small network    Fixed virbr0 N       0
 
 if [ ! -f /var/lib/one/small_network.net ]; then
-  cat >> /var/lib/one/small_network.net << EOF
+  cat > /var/lib/one/small_network.net << EOF
 NAME = "Small network"
 TYPE = FIXED
 BRIDGE = virbr0
@@ -97,7 +98,7 @@ fi
 ##   oneadmin@controller> onevm create ttylinux.one
 
 if [ ! -f /var/lib/one/ttylinux.one ]; then
-  cat >> /var/lib/one/ttylinux.one << EOF
+  cat > /var/lib/one/ttylinux.one << EOF
 NAME   = ttylinux
 CPU    = 0.1
 MEMORY = 64
