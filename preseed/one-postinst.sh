@@ -128,5 +128,4 @@ fi
 ## -----------------------------
 ##
 
-gem install uuidtools passenger json antlr3 typhoeus bundler occi
 wget https://github.com/gwdg/rOCCI-server/archive/0.5.3.tar.gz -O /root/rOCCI-server_0.5.3.tar.gz
