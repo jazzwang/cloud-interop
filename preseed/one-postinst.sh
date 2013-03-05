@@ -39,7 +39,7 @@ TM_MAD = [
     executable = "one_tm",
     arguments  = "tm_shared/tm_shared.conf" ]
 EOF
-su - oneadmin -c "one stop; one start; onehost create localhost im_kvm vmm_kvm tm_ssh dummy"
+fi
 
 ## Sample setup
 ## -----------------------------------------
@@ -54,7 +54,7 @@ su - oneadmin -c "one stop; one start; onehost create localhost im_kvm vmm_kvm t
 ##   oneadmin@controller> tar xvzf ttylinux.tar.gz
 
 mkdir -p /var/lib/one/one-templates
-tar zxvf /cdrom/one-templates/ttylinux.tar.gz -C /var/lib/one/one-templates
+tar zxvf /root/ttylinux.tar.gz -C /var/lib/one/one-templates
 
 ## Then, create a first virtual network (using virbr0 as bridge by default) :
 ##   oneadmin@controller> vi small_network.net
