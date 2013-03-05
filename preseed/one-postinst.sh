@@ -54,7 +54,9 @@ fi
 ##   oneadmin@controller> tar xvzf ttylinux.tar.gz
 
 mkdir -p /var/lib/one/one-templates
-tar zxvf /root/ttylinux.tar.gz -C /var/lib/one/one-templates
+if [ -f /media/cdrom/one-templates/ttylinux.tar.gz ]; then
+  tar zxvf /media/cdrom/one-templates/ttylinux.tar.gz -C /var/lib/one/one-templates
+fi
 
 ## Then, create a first virtual network (using virbr0 as bridge by default) :
 ##   oneadmin@controller> vi small_network.net
@@ -78,8 +80,6 @@ BRIDGE = virbr0
 LEASES = [ IP="192.168.122.2"]
 EOF
 fi
-
-su - oneadmin -c "onevnet create small_network.net"
 
 ## Finally, you can create the template configuration for this small VM :
 ## 
