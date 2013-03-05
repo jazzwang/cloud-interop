@@ -14,12 +14,17 @@ set -e
 ## -----------------------------------------
 ## Disable SSH client WARNING
 ## Setup SSH client Global variable
-echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+if [ -f /etc/ssh/ssh_config ]; then
+  echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+fi
 ## Copy controller ssh key to localhost
+## - ssh key exchange for user 'oneadmin'
 if [ ! -f /var/lib/one/.ssh/authorized_keys ]; then
-  ### ssh-copy-host for user 'oneadmin'
   cp -p /var/lib/one/.ssh/id_rsa.pub /var/lib/one/.ssh/authorized_keys
 fi
+
+## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
+##
 ## 4.2 If the node and controller are the same server
 ## You need to enable 'tm_shared' in '/etc/one/oned.conf' by uncommenting:
 ## -------------------
@@ -31,6 +36,7 @@ fi
 ## Restart OpenNebula and add the node:
 ##   oneadmin@controller> one stop; one start
 ##   oneadmin@controller> onehost create localhost im_kvm vmm_kvm tm_ssh dummy
+
 if [ -f /etc/one/oned.conf ]; then
   cat >> /etc/one/oned.conf << EOF
 
@@ -39,9 +45,12 @@ TM_MAD = [
     name       = "tm_shared",
     executable = "one_tm",
     arguments  = "tm_shared/tm_shared.conf" ]
+### Add by 'one-postinst.sh'
 EOF
 fi
 
+## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
+##
 ## Sample setup
 ## -----------------------------------------
 ## Here is a sample setup which is adapted from
@@ -59,6 +68,8 @@ if [ -f /root/ttylinux.tar.gz ]; then
   tar zxvf /root/ttylinux.tar.gz -C /var/lib/one/one-templates
 fi
 
+## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
+##
 ## Then, create a first virtual network (using virbr0 as bridge by default) :
 ##   oneadmin@controller> vi small_network.net
 ##  -------------------
@@ -82,6 +93,8 @@ LEASES = [ IP="192.168.122.2"]
 EOF
 fi
 
+## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
+##
 ## Finally, you can create the template configuration for this small VM :
 ## 
 ##   oneadmin@controller> vi ttylinux.one
@@ -109,3 +122,11 @@ DISK   = [
 NIC    = [ NETWORK = "Small network" ]
 EOF
 fi
+
+## -----------------------------
+## Ref: https://github.com/gwdg/rOCCI-server
+## -----------------------------
+##
+
+gem install uuidtools sinatra passenger json antlr3 typhoeus bundler occi
+wget https://github.com/gwdg/rOCCI-server/archive/0.5.3.tar.gz -O /root/rOCCI-server_0.5.3.tar.gz
