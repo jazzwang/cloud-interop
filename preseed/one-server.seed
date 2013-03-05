@@ -400,7 +400,7 @@ d-i grub-installer/with_other_os boolean true
 # During installations from serial console, the regular virtual consoles
 # (VT1-VT6) are normally disabled in /etc/inittab. Uncomment the next
 # line to prevent this.
-#d-i finish-install/keep-consoles boolean true
+d-i finish-install/keep-consoles boolean true
 
 # Avoid that last message about the install being complete.
 d-i finish-install/reboot_in_progress note
@@ -469,4 +469,4 @@ d-i cdrom-detect/eject boolean false
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
-d-i preseed/late_command string in-target /media/cdrom/one-postinst.sh
+#d-i preseed/late_command string in-target /media/cdrom/one-postinst.sh
