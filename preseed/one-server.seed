@@ -332,7 +332,7 @@ tasksel tasksel/first multiselect
 #tasksel tasksel/first multiselect kubuntu-desktop
 
 # Individual additional packages to install
-d-i pkgsel/include string openssh-server vim sudo    kvm opennebula opennebula-node opennebula-sunstone opennebula-tools novnc     w3m
+d-i pkgsel/include string openssh-server vim sudo    kvm opennebula opennebula-node opennebula-sunstone opennebula-tools novnc     w3m     libxml2-dev libxslt1-dev
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select safe-upgrade
@@ -469,4 +469,4 @@ d-i cdrom-detect/eject boolean false
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
-d-i preseed/late_command string cp /cdrom/preseed/one-postinst.sh /target/root/.; cp /cdrom/one-templates/* /target/root/.
+d-i preseed/late_command string cp /cdrom/one-templates/* /target/root/.; in-target /media/cdrom/preseed/one-postinst.sh
