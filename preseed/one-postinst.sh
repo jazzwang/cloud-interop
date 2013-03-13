@@ -123,6 +123,13 @@ NIC    = [ NETWORK = "Small network" ]
 EOF
 fi
 
+## Install Chinese 
+## Reference: http://blog.opennebula.org/?p=2771
+# TODO: Check /usr/share/opennebula/sunstone/public/locale
+
+## Enable OCCI Server 
+## FIXME: there is a bug of opennebula 3.2.1-2 package
+chmod a+x /usr/lib/one/ruby/cloud/occi/occi-server.rb
 ## -----------------------------
 ## Ref: https://github.com/gwdg/rOCCI-server
 ## -----------------------------
