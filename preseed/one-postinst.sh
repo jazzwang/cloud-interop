@@ -8,13 +8,6 @@
 
 set -e
 
-mount /dev/sr0 /media/cdrom
-## Copy vm disk template from installer CD
-cp /media/cdrom/one-templates/* /root/.
-## Copy related initial and testing script from installer CD
-cp /media/cdrom/preseed/one-init /root/.
-cp /media/cdrom/preseed/one-test /root/.
-
 ## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
 
 ## Add a new host (node) in OpenNebula pool
@@ -130,10 +123,13 @@ NIC    = [ NETWORK = "Small network" ]
 EOF
 fi
 
+<<<<<<< HEAD
 ## Install Chinese 
 ## Reference: http://blog.opennebula.org/?p=2771
 # TODO: Check /usr/share/opennebula/sunstone/public/locale
 
+=======
+>>>>>>>  * tiny fix: /usr/lib/one/ruby/cloud/occi/occi-server.rb should be executable.
 ## Enable OCCI Server 
 ## FIXME: there is a bug of opennebula 3.2.1-2 package
 chmod a+x /usr/lib/one/ruby/cloud/occi/occi-server.rb
