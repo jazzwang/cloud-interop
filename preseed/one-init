@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Author: Jazz Yao-Tsung Wang <jazzwang.tw@gmail.com>
+# - 2013-02-26 : First Draft
+# distributed under the terms of the GNU GPL version 2 or (at your option) any later version
+# see the file "COPYING" for details
+# Ref: http://hands.com/d-i/squeeze/start.sh
+
+set -e
+
+## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
+##   oneadmin@controller> onehost create localhost im_kvm vmm_kvm tm_ssh dummy
+
+onehost create localhost im_kvm vmm_kvm tm_ssh dummy
+
+##    oneadmin@controller> onevnet create small_network.net
+
+onevnet create small_network.net
+
+##   oneadmin@controller> onevm create ttylinux.one
+
+onevm create ttylinux.one

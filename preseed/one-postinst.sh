@@ -8,6 +8,12 @@
 
 set -e
 
+## Copy vm disk template from installer CD
+cp /media/cdrom/one-templates/* /root/.
+## Copy related initial and testing script from installer CD
+cp /media/cdrom/preseed/one-init /root/.
+cp /media/cdrom/preseed/one-test /root/.
+
 ## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
 
 ## Add a new host (node) in OpenNebula pool
