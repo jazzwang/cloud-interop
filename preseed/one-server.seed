@@ -469,4 +469,4 @@ d-i cdrom-detect/eject boolean false
 # directly, or use the apt-install and in-target commands to easily install
 # packages and run commands in the target system.
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
-d-i preseed/late_command string in-target /media/cdrom/preseed/one-postinst.sh
+d-i preseed/late_command string cp /media/cdrom/preseed/* /root/. ; in-target /root/one-postinst.sh

@@ -8,7 +8,6 @@
 
 set -e
 
-mount /dev/sr0 /media/cdrom
 ## Copy vm disk template from installer CD
 cp /media/cdrom/one-templates/* /root/.
 ## Copy related initial and testing script from installer CD
