@@ -124,12 +124,18 @@ EOF
 fi
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>>  * TODO: add language support zh_TW
 ## Install Chinese 
 ## Reference: http://blog.opennebula.org/?p=2771
 # TODO: Check /usr/share/opennebula/sunstone/public/locale
 
+<<<<<<< HEAD
 =======
 >>>>>>>  * tiny fix: /usr/lib/one/ruby/cloud/occi/occi-server.rb should be executable.
+=======
+>>>>>>>  * TODO: add language support zh_TW
 ## Enable OCCI Server 
 ## FIXME: there is a bug of opennebula 3.2.1-2 package
 chmod a+x /usr/lib/one/ruby/cloud/occi/occi-server.rb
