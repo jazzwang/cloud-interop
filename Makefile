@@ -1,6 +1,7 @@
 ISO_URL  := http://ftp.twaren.net/ubuntu-cd/precise/
 ISO_FILE := ubuntu-12.04.2-alternate-amd64.iso
 ONE_TMPL := ttylinux.tar.gz
+DATE	 := $$(date +%y%m%d-%H%M)
 
 all: iso
 
@@ -16,7 +17,7 @@ iso:
 	umount cd-src
 	cp isolinux/* 	cd-dst/isolinux
 	cp preseed/* 	cd-dst/preseed
-	sed -i "s#\%RELEASE\%#$(date +%y%m%d)#" cd-dst/isolinux/isolinux.cfg
+	sed -i "s#\%RELEASE\%#$(DATE)#" cd-dst/isolinux/isolinux.cfg
 	genisoimage -r -V "cloud-interop" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o cloud-interop.iso cd-dst
 	isohybrid cloud-interop.iso
 
