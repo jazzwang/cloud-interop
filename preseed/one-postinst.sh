@@ -8,6 +8,12 @@
 
 set -e
 
+## Copy one related script to /var/lib/one
+if [ -d /var/lib/one ]; then
+  cp /media/cdrom/preseed/one-init /var/lib/one/.
+  cp /media/cdrom/preseed/one-test /var/lib/one/.
+fi
+
 ## Ref: /usr/share/doc/opennebula/README.Debian.gz @ opennebula package
 
 ## Add a new host (node) in OpenNebula pool
