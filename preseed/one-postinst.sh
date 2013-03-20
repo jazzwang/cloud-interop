@@ -129,7 +129,7 @@ NIC    = [ NETWORK = "Small network" ]
 EOF
 fi
 
-## Install Chinese 
+## Install Chinese language pack for SunStone
 ## Reference: http://blog.opennebula.org/?p=2771
 # TODO: Check /usr/share/opennebula/sunstone/public/locale
 
