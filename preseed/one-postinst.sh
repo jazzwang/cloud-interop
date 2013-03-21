@@ -142,4 +142,12 @@ chmod a+x /usr/lib/one/ruby/cloud/occi/occi-server.rb
 ##
 
 gem install bundler
-wget https://github.com/gwdg/rOCCI-server/archive/0.5.3.tar.gz -O /root/rOCCI-server_0.5.3.tar.gz
+#wget https://github.com/gwdg/rOCCI-server/archive/0.5.3.tar.gz -O /root/rOCCI-server_0.5.3.tar.gz
+
+## testing
+/etc/init.d/opennebula start
+su - oneadmin -c "onehost create localhost im_kvm vmm_kvm tm_ssh dummy"
+su - oneadmin -c "onevnet create small_network.net"
+su - oneadmin -c "onevm   create ttylinux.one"
+su - oneadmin -c "oneuser create one oneadmin"
+su - oneadmin -c "oneuser chgrp  one oneadmin"
