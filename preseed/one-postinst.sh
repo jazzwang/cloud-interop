@@ -144,10 +144,26 @@ chmod a+x /usr/lib/one/ruby/cloud/occi/occi-server.rb
 gem install bundler
 #wget https://github.com/gwdg/rOCCI-server/archive/0.5.3.tar.gz -O /root/rOCCI-server_0.5.3.tar.gz
 
-## testing
-/etc/init.d/opennebula start
-su - oneadmin -c "onehost create localhost im_kvm vmm_kvm tm_ssh dummy"
-su - oneadmin -c "onevnet create small_network.net"
-su - oneadmin -c "onevm   create ttylinux.one"
-su - oneadmin -c "oneuser create one oneadmin"
-su - oneadmin -c "oneuser chgrp  one oneadmin"
+## testing : 2013-03-21 fail
+
+# Mar 21 10:41:46 preseed: running preseed command preseed/late_command: in-target /media/cdrom/preseed/one-postinst.sh
+# Mar 21 10:42:12 in-target: Successfully installed bundler-1.3.4
+# Mar 21 10:42:12 in-target: 1 gem installed
+# Mar 21 10:42:12 in-target: Installing ri documentation for bundler-1.3.4...
+# Mar 21 10:42:12 in-target: Installing RDoc documentation for bundler-1.3.4...
+# Mar 21 18:42:12 su[6903]: Successful su for oneadmin by root
+# Mar 21 18:42:12 su[6903]: + ??? root:oneadmin
+# Mar 21 18:42:12 su[6903]: pam_unix(su:session): session opened for user oneadmin by (uid=0)
+# Mar 21 18:42:15 su[6903]: pam_unix(su:session): session closed for user oneadmin
+# Mar 21 18:42:15 su[6914]: Successful su for oneadmin by root
+# Mar 21 18:42:15 su[6914]: + ??? root:oneadmin
+# Mar 21 18:42:15 su[6914]: pam_unix(su:session): session opened for user oneadmin by (uid=0)
+# Mar 21 10:42:16 in-target: Connection refused - connect(2)
+# Mar 21 18:42:16 su[6914]: pam_unix(su:session): session closed for user oneadmin
+
+# /etc/init.d/opennebula start
+# su - oneadmin -c "onehost create localhost im_kvm vmm_kvm tm_ssh dummy"
+# su - oneadmin -c "onevnet create small_network.net"
+# su - oneadmin -c "onevm   create ttylinux.one"
+# su - oneadmin -c "oneuser create one oneadmin"
+# su - oneadmin -c "oneuser chgrp  one oneadmin"
