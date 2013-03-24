@@ -20,3 +20,5 @@ onevnet create small_network.net
 ##   oneadmin@controller> onevm create ttylinux.one
 
 onevm create ttylinux.one
+
+touch /var/lib/one/.one-init.done
