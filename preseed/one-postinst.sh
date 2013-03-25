@@ -144,6 +144,6 @@ chmod a+x /usr/lib/one/ruby/cloud/occi/occi-server.rb
 gem install bundler
 #wget https://github.com/gwdg/rOCCI-server/archive/0.5.3.tar.gz -O /root/rOCCI-server_0.5.3.tar.gz
 
-cat >> /etc/rc.local << EOF
-if [ ! -x /var/lib/one/.one-init.done ]; then su - oneadmin -c "/var/lib/one/one-init" ; fi
-EOF
+oneinit="if [ ! -x /var/lib/one/.one-init.done ]; then su - oneadmin -c \"/var/lib/one/one-init\" ; fi"
+line=$(cat -n /etc/rc.local | grep "exit 0$" | awk '{ print $1 }')
+sed -i "${line}i${oneinit}" /etc/rc.local
